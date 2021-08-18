@@ -28,7 +28,6 @@ public class CourseDAOImpl implements CourseDAO {
         return entityManager.find(Course.class,id);
     }
 
-
     @Override
     @Transactional
     public Course save(Course course) {
