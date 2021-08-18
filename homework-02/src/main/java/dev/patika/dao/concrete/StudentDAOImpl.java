@@ -2,15 +2,14 @@ package dev.patika.dao.concrete;
 
 import dev.patika.model.Student;
 import dev.patika.dao.StudentDAO;
-import org.hibernate.Session;
 import org.springframework.stereotype.Repository;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.transaction.annotation.Transactional;
 
 import javax.persistence.EntityManager;
 import java.util.List;
 
 @Repository
-public class StudentDAOImpl implements StudentDAO {
+public class StudentDAOImpl implements StudentDAO<Student> {
 
     private EntityManager entityManager;
 
@@ -24,22 +23,25 @@ public class StudentDAOImpl implements StudentDAO {
     }
 
     @Override
-    public Object findById(long id) {
-        return null;
+    public Student findById(int id) {
+        return entityManager.find(Student.class,id);
     }
 
     @Override
-    public Object save(Object o) {
-        return null;
+    @Transactional
+    public Student save(Student student) {
+        return entityManager.merge(student);
     }
 
     @Override
-    public void delete(long id) {
-
+    @Transactional
+    public void delete(int id) {
+        entityManager.remove(findById(id));
     }
 
     @Override
-    public void update(Object o) {
+    public void update(Student student) {
 
     }
+
 }

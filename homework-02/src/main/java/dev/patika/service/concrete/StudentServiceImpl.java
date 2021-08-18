@@ -23,17 +23,18 @@ public class StudentServiceImpl implements StudentService {
 
     @Override
     public Student findById(int id) {
-        return null;
+        Student foundStudent = (Student) studentDAO.findById(id);
+        return foundStudent;
     }
 
     @Override
-    public Student save(Student object) {
-        return null;
+    public Student save(Student student) {
+        return (Student) studentDAO.save(student);
     }
 
     @Override
     public void deleteById(int id) {
-
+        studentDAO.delete(id);
     }
 
     @Override

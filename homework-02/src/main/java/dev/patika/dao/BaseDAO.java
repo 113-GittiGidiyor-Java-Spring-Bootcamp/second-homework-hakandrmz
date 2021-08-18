@@ -6,11 +6,11 @@ public interface BaseDAO<T>{
 
     List<T> findAll();
 
-    T findById(long id);
+    T findById(int id);
 
     T save(T t);
 
-    void delete(long id);
+    void delete(int id);
 
     void update(T t);
 

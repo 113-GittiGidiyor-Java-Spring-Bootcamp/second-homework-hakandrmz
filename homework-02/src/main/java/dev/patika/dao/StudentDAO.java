@@ -1,6 +1,5 @@
 package dev.patika.dao;
 
-import dev.patika.model.Student;
 import org.springframework.stereotype.Repository;
 
 @Repository
