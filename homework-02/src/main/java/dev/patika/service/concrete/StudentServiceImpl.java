@@ -39,6 +39,6 @@ public class StudentServiceImpl implements StudentService {
 
     @Override
     public void update(Student student) {
-
+        studentDAO.update(student);
     }
 }

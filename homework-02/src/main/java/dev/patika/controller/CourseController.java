@@ -31,5 +31,17 @@ public class CourseController {
         return new ResponseEntity(courseService.findAll(), HttpStatus.OK);
     }
 
+    @DeleteMapping("/course/{id}")
+    public HttpStatus deleteCourse(@PathVariable int id){
+        courseService.deleteById(id);
+        return HttpStatus.OK;
+    }
+
+    @PutMapping("/course")
+    public Course updateCourse(@RequestBody Course course){
+        courseService.update(course);
+        return courseService.findById(course.getId());
+    }
+
 
 }

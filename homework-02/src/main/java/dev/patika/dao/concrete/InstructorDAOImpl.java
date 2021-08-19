@@ -41,7 +41,8 @@ public class InstructorDAOImpl implements InstructorDAO {
     }
 
     @Override
+    @Transactional
     public void update(Instructor instructor) {
-
+        entityManager.merge(instructor);
     }
 }

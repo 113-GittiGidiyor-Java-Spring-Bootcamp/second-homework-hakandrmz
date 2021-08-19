@@ -39,6 +39,6 @@ public class CourseServiceImpl implements CourseService {
 
     @Override
     public void update(Course course) {
-
+        courseDAO.update(course);
     }
 }

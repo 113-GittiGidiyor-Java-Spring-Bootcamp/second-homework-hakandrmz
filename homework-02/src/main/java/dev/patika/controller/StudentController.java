@@ -41,5 +41,11 @@ public class StudentController {
         return HttpStatus.OK;
     }
 
+    @PutMapping("/student")
+    public Student updateStudent(@RequestBody Student student){
+        studentService.update(student);
+        return studentService.findById(student.getId());
+    }
+
 
 }

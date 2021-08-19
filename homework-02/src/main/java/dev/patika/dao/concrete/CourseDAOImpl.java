@@ -41,7 +41,8 @@ public class CourseDAOImpl implements CourseDAO {
     }
 
     @Override
+    @Transactional
     public void update(Course course) {
-
+        entityManager.merge(course);
     }
 }

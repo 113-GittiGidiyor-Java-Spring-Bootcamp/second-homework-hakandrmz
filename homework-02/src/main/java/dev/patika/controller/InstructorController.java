@@ -2,6 +2,7 @@ package dev.patika.controller;
 
 import dev.patika.model.Instructor;
 import dev.patika.model.PermanentInstructor;
+import dev.patika.model.Student;
 import dev.patika.model.VisitingResearcher;
 import dev.patika.service.InstructorService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -38,6 +39,17 @@ public class InstructorController {
         return instructorService.save(instructor);
     }
 
+    @DeleteMapping("/instructor/{id}")
+    public HttpStatus deleteInstructor(@PathVariable int id){
+        instructorService.deleteById(id);
+        return HttpStatus.OK;
+    }
+
+    @PutMapping("/instructor")
+    public Instructor updateInstructor(@RequestBody Instructor instructor){
+        instructorService.update(instructor);
+        return instructorService.findById(instructor.getId());
+    }
 
 
 
