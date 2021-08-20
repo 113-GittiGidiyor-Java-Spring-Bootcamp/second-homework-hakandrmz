@@ -4,4 +4,5 @@ import org.springframework.stereotype.Repository;
 
 @Repository
 public interface StudentDAO<Student> extends BaseDAO<Student> {
+    Student delete(Student student);
 }

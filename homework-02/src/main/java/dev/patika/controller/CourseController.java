@@ -32,7 +32,7 @@ public class CourseController {
     }
 
     @DeleteMapping("/course/{id}")
-    public HttpStatus deleteCourse(@PathVariable int id){
+    public HttpStatus deleteCourseById(@PathVariable int id){
         courseService.deleteById(id);
         return HttpStatus.OK;
     }

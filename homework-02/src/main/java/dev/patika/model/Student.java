@@ -3,7 +3,9 @@ package dev.patika.model;
 import javax.persistence.*;
 import java.time.LocalDate;
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 @Entity
 public class Student {
@@ -18,7 +20,7 @@ public class Student {
     private String gender;
 
     @ManyToMany(mappedBy = "students")
-    private List<Course> studentCourses = new ArrayList<>();
+    private Set<Course> courses = new HashSet<>();
 
     public Student() {
     }
@@ -30,12 +32,12 @@ public class Student {
         this.gender = gender;
     }
 
-    public List<Course> getStudentCourses() {
-        return studentCourses;
+    public Set<Course> getCourses() {
+        return courses;
     }
 
-    public void setStudentCourses(List<Course> studentCourses) {
-        this.studentCourses = studentCourses;
+    public void setCourses(Set<Course> courses) {
+        this.courses = courses;
     }
 
     public String getAddress() {
@@ -85,7 +87,7 @@ public class Student {
                 ", birthDate=" + birthDate +
                 ", address='" + address + '\'' +
                 ", gender='" + gender + '\'' +
-                ", studentCourses=" + studentCourses +
+                ", studentCourses=" + courses +
                 '}';
     }
 

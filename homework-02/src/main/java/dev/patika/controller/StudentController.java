@@ -36,8 +36,14 @@ public class StudentController {
     }
 
     @DeleteMapping("/student/{id}")
-    public HttpStatus deleteStudent(@PathVariable int id){
+    public HttpStatus deleteStudentById(@PathVariable int id){
         studentService.deleteById(id);
+        return HttpStatus.OK;
+    }
+
+    @DeleteMapping("/student")
+    public HttpStatus deleteStudent(@RequestBody Student student){
+        studentService.delete(student);
         return HttpStatus.OK;
     }
 
@@ -46,6 +52,4 @@ public class StudentController {
         studentService.update(student);
         return studentService.findById(student.getId());
     }
-
-
 }

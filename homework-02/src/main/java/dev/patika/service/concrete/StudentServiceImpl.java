@@ -41,4 +41,9 @@ public class StudentServiceImpl implements StudentService {
     public void update(Student student) {
         studentDAO.update(student);
     }
+
+    @Override
+    public Student delete(Student student) {
+        return (Student) studentDAO.delete(student);
+    }
 }

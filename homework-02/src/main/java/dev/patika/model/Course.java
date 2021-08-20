@@ -1,9 +1,7 @@
 package dev.patika.model;
 
 import javax.persistence.*;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Objects;
+import java.util.*;
 
 @Entity
 public class Course {
@@ -17,9 +15,9 @@ public class Course {
     private int credit;
 
     @ManyToMany
-    private List<Student> students = new ArrayList<>();
+    private Set<Student> students = new HashSet<>();
 
-    @ManyToOne
+    @ManyToOne(cascade = CascadeType.ALL)
     private Instructor instructor;
 
     public Course() {
@@ -63,11 +61,11 @@ public class Course {
         this.credit = credit;
     }
 
-    public List<Student> getStudents() {
+    public Set<Student> getStudents() {
         return students;
     }
 
-    public void setStudents(List<Student> students) {
+    public void setStudents(Set<Student> students) {
         this.students = students;
     }
 
