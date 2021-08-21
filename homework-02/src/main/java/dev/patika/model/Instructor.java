@@ -16,7 +16,7 @@ public class Instructor {
     private String address;
     private String phoneNumber;
 
-    @OneToMany(mappedBy = "instructor")
+    @OneToMany(mappedBy = "instructor",cascade = CascadeType.ALL)
     private List<Course> instructorCourses  = new ArrayList<>();
 
     public Instructor() {

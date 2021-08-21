@@ -14,8 +14,8 @@ public class Course {
     private String courseCode;
     private int credit;
 
-    @ManyToMany
-    private Set<Student> students = new HashSet<>();
+    @ManyToMany(cascade = CascadeType.ALL)
+    private List<Student> students = new ArrayList<>();
 
     @ManyToOne(cascade = CascadeType.ALL)
     private Instructor instructor;
@@ -61,11 +61,11 @@ public class Course {
         this.credit = credit;
     }
 
-    public Set<Student> getStudents() {
+    public List<Student> getStudents() {
         return students;
     }
 
-    public void setStudents(Set<Student> students) {
+    public void setStudents(List<Student> students) {
         this.students = students;
     }
 

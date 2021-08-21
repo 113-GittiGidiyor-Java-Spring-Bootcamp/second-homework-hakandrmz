@@ -20,7 +20,7 @@ public class Student {
     private String gender;
 
     @ManyToMany(mappedBy = "students")
-    private Set<Course> courses = new HashSet<>();
+    private List<Course> courses = new ArrayList<>();
 
     public Student() {
     }
@@ -32,11 +32,11 @@ public class Student {
         this.gender = gender;
     }
 
-    public Set<Course> getCourses() {
+    public List<Course> getCourses() {
         return courses;
     }
 
-    public void setCourses(Set<Course> courses) {
+    public void setCourses(List<Course> courses) {
         this.courses = courses;
     }
 
