@@ -1,5 +1,6 @@
 package dev.patika.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
 
@@ -9,7 +10,7 @@ import java.util.List;
 import java.util.Objects;
 
 @Entity
-public class Instructor implements Serializable {
+public class Instructor{
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -20,7 +21,8 @@ public class Instructor implements Serializable {
     private String phoneNumber;
 
     @JsonManagedReference
-    @OneToMany(mappedBy = "instructor", fetch=FetchType.EAGER)
+    @OneToMany(mappedBy = "instructor")
+    @JsonIgnore
     private List<Course> courses;
 
     public Instructor() {

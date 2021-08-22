@@ -1,6 +1,7 @@
 package dev.patika.model;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 import javax.persistence.*;
@@ -8,7 +9,7 @@ import java.io.Serializable;
 import java.util.*;
 
 @Entity
-public class Course implements Serializable {
+public class Course{
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -19,11 +20,16 @@ public class Course implements Serializable {
     private int credit;
 
     @JsonBackReference
-    @ManyToMany(mappedBy = "courses",fetch = FetchType.EAGER)
+    @ManyToMany(cascade = { CascadeType.ALL })
+    @JoinTable(
+            name = "Course_Student",
+            joinColumns = { @JoinColumn(name = "course_id") },
+            inverseJoinColumns = { @JoinColumn(name = "student_id") }
+    )
     private List<Student> students = new ArrayList<>();
 
     @JsonBackReference
-    @ManyToOne(fetch = FetchType.LAZY)
+    @ManyToOne(cascade=CascadeType.ALL)
     @JoinColumn(name = "instructor_id")
     private Instructor instructor;
 

@@ -28,9 +28,9 @@ public class DataLoader implements CommandLineRunner {
         int count = studentService.findAll().size();
         System.out.println(count);
 
-        //if(count == 0) {
-        //  loadData();
-        //}
+        if(count < 50) {
+          loadData();
+        }
 
     }
 
@@ -68,10 +68,8 @@ public class DataLoader implements CommandLineRunner {
         studentService.save(stu4);
         studentService.save(stu5);
 
-
         courseService.save(course1);
         courseService.save(course2);
-
 
     }
 }

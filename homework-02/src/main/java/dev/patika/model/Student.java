@@ -1,5 +1,6 @@
 package dev.patika.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
 
@@ -22,7 +23,8 @@ public class Student {
     private String gender;
 
     @JsonManagedReference
-    @ManyToMany(cascade = CascadeType.ALL)
+    @ManyToMany(cascade = CascadeType.ALL,mappedBy = "students")
+    @JsonIgnore
     private List<Course> courses = new ArrayList<>();
 
     public Student() {
