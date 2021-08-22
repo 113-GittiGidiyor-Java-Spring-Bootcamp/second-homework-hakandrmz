@@ -28,7 +28,7 @@ public class DataLoader implements CommandLineRunner {
         int count = studentService.findAll().size();
         System.out.println(count);
 
-        if(count < 50) {
+        if(count == 0) {
           loadData();
         }
 
