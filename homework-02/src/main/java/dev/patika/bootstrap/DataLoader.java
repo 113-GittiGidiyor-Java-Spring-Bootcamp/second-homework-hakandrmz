@@ -28,9 +28,9 @@ public class DataLoader implements CommandLineRunner {
         int count = studentService.findAll().size();
         System.out.println(count);
 
-        if(count == 0) {
-            loadData();
-        }
+        //if(count == 0) {
+        //  loadData();
+        //}
 
     }
 
@@ -48,25 +48,26 @@ public class DataLoader implements CommandLineRunner {
         Instructor pi = new PermanentInstructor("Celal","ITU","918273645",100);
         Instructor vr = new VisitingResearcher("Dilan","Kayseri","918273645",300);
 
+        course1.setInstructor(pi);
+        course2.setInstructor(vr);
+
+        course1.getStudents().add(stu1);
+        course1.getStudents().add(stu2);
+        course1.getStudents().add(stu3);
+        course1.getStudents().add(stu4);
+        course2.getStudents().add(stu3);
+        course2.getStudents().add(stu4);
+        course2.getStudents().add(stu5);
+
+        instructorService.save(pi);
+        instructorService.save(vr);
+
         studentService.save(stu1);
         studentService.save(stu2);
         studentService.save(stu3);
         studentService.save(stu4);
         studentService.save(stu5);
 
-        course1.setInstructor(pi);
-        course2.setInstructor(vr);
-
-       course1.getStudents().add(stu1);
-       course1.getStudents().add(stu2);
-       course1.getStudents().add(stu3);
-       course1.getStudents().add(stu4);
-       course2.getStudents().add(stu3);
-       course2.getStudents().add(stu4);
-       course2.getStudents().add(stu5);
-
-        instructorService.save(pi);
-        instructorService.save(vr);
 
         courseService.save(course1);
         courseService.save(course2);

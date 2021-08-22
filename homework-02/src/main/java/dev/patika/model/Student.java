@@ -1,11 +1,13 @@
 package dev.patika.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
+
 import javax.persistence.*;
 import java.time.LocalDate;
 import java.util.ArrayList;
-import java.util.HashSet;
 import java.util.List;
-import java.util.Set;
+
 
 @Entity
 public class Student {
@@ -19,7 +21,8 @@ public class Student {
     private String address;
     private String gender;
 
-    @ManyToMany(mappedBy = "students")
+    @JsonManagedReference
+    @ManyToMany(cascade = CascadeType.ALL)
     private List<Course> courses = new ArrayList<>();
 
     public Student() {
@@ -30,22 +33,6 @@ public class Student {
         this.birthDate = birthDate;
         this.address = address;
         this.gender = gender;
-    }
-
-    public List<Course> getCourses() {
-        return courses;
-    }
-
-    public void setCourses(List<Course> courses) {
-        this.courses = courses;
-    }
-
-    public String getAddress() {
-        return address;
-    }
-
-    public void setAddress(String address) {
-        this.address = address;
     }
 
     public int getId() {
@@ -72,12 +59,28 @@ public class Student {
         this.birthDate = birthDate;
     }
 
+    public String getAddress() {
+        return address;
+    }
+
+    public void setAddress(String address) {
+        this.address = address;
+    }
+
     public String getGender() {
         return gender;
     }
 
     public void setGender(String gender) {
         this.gender = gender;
+    }
+
+    public List<Course> getCourses() {
+        return courses;
+    }
+
+    public void setCourses(List<Course> courses) {
+        this.courses = courses;
     }
 
     @Override

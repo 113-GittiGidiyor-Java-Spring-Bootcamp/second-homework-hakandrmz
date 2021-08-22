@@ -1,12 +1,15 @@
 package dev.patika.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
+
 import javax.persistence.*;
-import java.util.ArrayList;
+import java.io.Serializable;
 import java.util.List;
 import java.util.Objects;
 
 @Entity
-public class Instructor {
+public class Instructor implements Serializable {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -16,8 +19,9 @@ public class Instructor {
     private String address;
     private String phoneNumber;
 
-    @OneToMany(mappedBy = "instructor",cascade = CascadeType.ALL)
-    private List<Course> instructorCourses  = new ArrayList<>();
+    @JsonManagedReference
+    @OneToMany(mappedBy = "instructor", fetch=FetchType.EAGER)
+    private List<Course> courses;
 
     public Instructor() {
     }
@@ -58,6 +62,14 @@ public class Instructor {
 
     public void setPhoneNumber(String phoneNumber) {
         this.phoneNumber = phoneNumber;
+    }
+
+    public List<Course> getCourses() {
+        return courses;
+    }
+
+    public void setCourses(List<Course> courses) {
+        this.courses = courses;
     }
 
     @Override

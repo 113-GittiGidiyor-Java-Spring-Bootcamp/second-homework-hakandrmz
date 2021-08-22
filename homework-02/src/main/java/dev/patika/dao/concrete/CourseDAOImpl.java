@@ -19,11 +19,13 @@ public class CourseDAOImpl implements CourseDAO {
     }
 
     @Override
+    @Transactional
     public List<Course> findAll() {
         return entityManager.createQuery("From Course", Course.class).getResultList();
     }
 
     @Override
+    @Transactional
     public Course findById(int id) {
         return entityManager.find(Course.class,id);
     }
